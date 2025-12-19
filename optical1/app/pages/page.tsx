@@ -2,15 +2,14 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App4() {
+export default function OpticalUltraPremium() {
+  const glasses = Array.from({ length: 12 });
+
   return (
     <div>
       {/* ================= GLOBAL STYLE ================= */}
       <style>{`
-        body {
-          background:#faf7f5;
-        }
-
+        body { background:#faf7f5; }
         html { scroll-behavior:smooth; }
 
         .fade-up {
@@ -19,41 +18,59 @@ export default function App4() {
         }
         @keyframes fadeUp {
           from { opacity:0; transform:translateY(60px); }
-          to { opacity:1; transform:translateY(0); }
+          to { opacity:1; transform:none; }
         }
 
-        .zoom-hover {
-          transition:.5s ease;
-        }
+        .zoom-hover { transition:.5s ease; }
         .zoom-hover:hover {
           transform:scale(1.08);
           box-shadow:0 25px 60px rgba(0,0,0,.25);
         }
 
-        .float {
-          animation: float 5s ease-in-out infinite;
-        }
-        @keyframes float {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-18px); }
-          100% { transform: translateY(0); }
-        }
-
         .lux-btn {
-          background: linear-gradient(90deg,#7c2d12,#be123c);
+          background:linear-gradient(90deg,#7c2d12,#be123c);
           border:none;
           color:#fff;
         }
         .lux-btn:hover {
-          background: linear-gradient(90deg,#be123c,#7c2d12);
+          background:linear-gradient(90deg,#be123c,#7c2d12);
         }
 
         .glass-card {
-          background:rgba(255,255,255,.95);
-          backdrop-filter: blur(10px);
+          background:#fff;
           border-radius:18px;
         }
+
+        .offer-banner{
+          background:linear-gradient(90deg,#3f1d38,#1b0f1a);
+          color:#fff;
+          padding:12px;
+          font-weight:600;
+          text-align:center;
+        }
+
+        .whatsapp-float{
+          position:fixed;
+          bottom:25px;
+          right:25px;
+          background:#25D366;
+          color:white;
+          width:60px;
+          height:60px;
+          border-radius:50%;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:30px;
+          z-index:999;
+          box-shadow:0 10px 30px rgba(0,0,0,.4);
+        }
       `}</style>
+
+      {/* ================= OFFER ================= */}
+      <div className="offer-banner">
+        🎉 Flat ₹500 OFF – Use Code <b>OPTICAL500</b>
+      </div>
 
       {/* ================= TOP BAR ================= */}
       <div
@@ -69,9 +86,9 @@ export default function App4() {
       {/* ================= HEADER ================= */}
       <nav className="navbar navbar-expand-lg bg-white shadow py-3">
         <div className="container">
-          <a className="navbar-brand fw-bold fs-2">
+          <span className="navbar-brand fw-bold fs-2">
             optical99<span style={{ color: "#be123c" }}>.com</span>
-          </a>
+          </span>
 
           <button
             className="navbar-toggler"
@@ -91,11 +108,6 @@ export default function App4() {
               <li className="nav-item">
                 <a className="nav-link" href="#products">
                   Collection
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#video">
-                  Store
                 </a>
               </li>
               <li className="nav-item">
@@ -126,19 +138,14 @@ export default function App4() {
                 Redefining <br /> Vision & Style
               </h1>
               <p className="fs-4 mt-4">
-                Premium frames, advanced lenses & luxury eye-care crafted for
-                modern lifestyle.
-              </p>
-              <p className="fs-5">
-                Experience unmatched clarity, comfort & elegance at Royal
-                Optics.
+                Premium frames & advanced lenses crafted for modern lifestyle.
               </p>
               <div className="d-flex gap-4 mt-5">
                 <a href="#products" className="btn btn-light btn-lg fw-bold">
                   View Collection
                 </a>
                 <a href="#contact" className="btn btn-outline-light btn-lg">
-                  Store Visit
+                  Visit Store
                 </a>
               </div>
             </div>
@@ -146,8 +153,8 @@ export default function App4() {
             <div className="col-md-6 text-center">
               <img
                 src="https://images.unsplash.com/photo-1511499767150-a48a237f0083"
-                className="img-fluid rounded-4 shadow-lg float"
-                alt="Optical Glass"
+                className="img-fluid rounded-4 shadow-lg"
+                alt="Optical"
               />
             </div>
           </div>
@@ -163,12 +170,7 @@ export default function App4() {
         <div className="container text-center fade-up">
           <h2 className="fw-bold display-6 mb-4">Why Choose Royal Optics?</h2>
           <p className="fs-5">
-            We blend cutting-edge eye-testing technology with premium eyewear
-            collections curated for comfort and confidence.
-          </p>
-          <p className="fs-5">
-            Every frame reflects luxury craftsmanship and precise vision
-            correction.
+            Advanced eye testing, premium frames & trusted vision care.
           </p>
         </div>
       </section>
@@ -185,22 +187,26 @@ export default function App4() {
           </h2>
 
           <div className="row g-5">
-            {Array.from({ length: 12 }).map((_, i) => (
+            {glasses.map((_, i) => (
               <div className="col-md-4 fade-up" key={i}>
                 <div className="card glass-card h-100 shadow zoom-hover">
                   <img
-                    src={`https://images.unsplash.com/photo-${
-                      1511499767150 + i
-                    }?a48a237f0083`}
+                    src="https://images.unsplash.com/photo-1511499767150-a48a237f0083"
                     className="card-img-top rounded-top"
-                    alt="Glass"
+                    alt="Frame"
                   />
                   <div className="card-body text-center">
                     <h5 className="fw-bold">Luxury Frame {i + 1}</h5>
-                    <p className="fs-4 fw-bold" style={{ color: "#be123c" }}>
+                    <p className="fs-4 fw-bold text-danger">
                       ₹{1999 + i * 250}
                     </p>
-                    <button className="btn lux-btn w-100">Enquire Now</button>
+                    <button
+                      className="btn lux-btn w-100"
+                      data-bs-toggle="modal"
+                      data-bs-target="#detailsModal"
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
               </div>
@@ -209,23 +215,18 @@ export default function App4() {
         </div>
       </section>
 
-      <section
-        id="video"
-        className="py-5"
-        style={{ background: "linear-gradient(135deg,#3f1d38,#1b0f1a)" }}
-      >
-        <div className="container text-center text-white fade-up">
-          <h2 className="fw-bold display-6 mb-4">Inside Royal Optics</h2>
-          <div className="ratio ratio-16x9 shadow-lg rounded overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/0K2F3n3cCyY"
-              title="Optical Store"
-              allowFullScreen
-            ></iframe>
+      {/* ================= MODAL ================= */}
+      <div className="modal fade" id="detailsModal">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content p-4">
+            <h3>Premium Optical Frame</h3>
+            <p>Anti-glare • Blue Cut • UV Protection</p>
+            <h4 className="text-danger">₹2,999</h4>
           </div>
         </div>
-      </section>
+      </div>
 
+      {/* ================= CONTACT ================= */}
       <section
         id="contact"
         className="py-5 text-white text-center"
@@ -233,9 +234,8 @@ export default function App4() {
       >
         <div className="container fade-up">
           <h2 className="fw-bold display-6">Visit Royal Optics</h2>
-          <p className="fs-4 mt-3">Where Vision Meets Elegance</p>
-          <p className="fw-bold fs-5">📍 Main Market, Your City</p>
-          <p className="fw-bold fs-5">📞 +91 98765 43210</p>
+          <p className="fs-4">📍 Main Market, Your City</p>
+          <p className="fs-4">📞 +91 98765 43210</p>
           <p className="fs-5">🕘 Mon – Sat : 9 AM – 9 PM</p>
         </div>
       </section>
@@ -246,11 +246,17 @@ export default function App4() {
         style={{ background: "linear-gradient(90deg,#000,#1b0f1a)" }}
       >
         <h5 className="fw-bold">Royal Optics</h5>
-        <p className="small">Luxury Vision • Trusted Craft</p>
-        <small>
-          © {new Date().getFullYear()} Royal Optics. All Rights Reserved
-        </small>
+        <small>© {new Date().getFullYear()} All Rights Reserved</small>
       </footer>
+
+      {/* ================= WHATSAPP ================= */}
+      <a
+        href="https://wa.me/919876543210"
+        target="_blank"
+        className="whatsapp-float"
+      >
+        💬
+      </a>
     </div>
   );
 }

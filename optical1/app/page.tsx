@@ -1,10 +1,9 @@
-import App4 from "./pages/page";
-
+import OpticalUltraPremium from "./pages/page";
 
 export default function Home() {
   return (
     <div>
-      <App4/>
+      <OpticalUltraPremium/>
     </div>
   );
 }
